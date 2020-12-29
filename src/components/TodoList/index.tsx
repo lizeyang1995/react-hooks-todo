@@ -3,6 +3,7 @@ import TdInput from './Input'
 import TdList from './List'
 import { ITodo, IState, ACTION_TYPE } from './typings'
 import { todoReducer } from './reducer'
+import { stat } from 'fs'
 
 const initialState: IState = {
     todoList: []
@@ -32,13 +33,24 @@ const TodoList: FC = (): ReactElement => {
         })
     }, [])
 
+    const removeTodo = useCallback((id: number): void => {
+
+    }, [])
+
+    const toggleTodo = useCallback((id: number): void => {
+
+    }, [])
+
     return (
         <div className="todo-list">
             <TdInput
                 addTodo={addTodo}
                 todoList={state.todoList}
             />
-            <TdList />
+            <TdList
+                todoList={state.todoList}
+                removeTodo={removeTodo}
+                toggleTodo={toggleTodo} />
         </div>
     )
 }
