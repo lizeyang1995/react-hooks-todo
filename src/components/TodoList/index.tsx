@@ -5,8 +5,14 @@ import { ITodo, IState, ACTION_TYPE } from './typings'
 import { todoReducer } from './reducer'
 import { stat } from 'fs'
 
-const initialState: IState = {
-    todoList: []
+// const initialState: IState = {
+//     todoList: []
+// }
+
+function init (initTodoList: ITodo[]): IState {
+    return {
+        todoList: initTodoList
+    }
 }
 
 const TodoList: FC = (): ReactElement => {
@@ -20,7 +26,7 @@ const TodoList: FC = (): ReactElement => {
     //     setTodoList(todoList => [...todoList, todo])
     // }, [])
 
-    const [state, dispatch] = useReducer(todoReducer, initialState)
+    const [state, dispatch] = useReducer(todoReducer, [], init)
 
     useEffect(() => {
         console.log(state.todoList);
