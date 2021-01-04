@@ -9,8 +9,6 @@ function todoReducer(state: IState, action: IAction): IState {
                 todoList: payload as ITodo[]
             }
         case ACTION_TYPE.ADD_TODO:
-            console.log("state:", state);
-            
             return {
                 ...state,
                 todoList: [...state.todoList, payload as ITodo]
@@ -24,7 +22,6 @@ function todoReducer(state: IState, action: IAction): IState {
             return {
                 ...state,
                 todoList: state.todoList.map(todo => {
-                    console.log("todo:", todo);
                     return todo.id === payload?
                     {
                         ...todo,
